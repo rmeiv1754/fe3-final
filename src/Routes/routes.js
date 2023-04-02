@@ -1,6 +1,6 @@
 export const routes = {
     home: '/home',
-    contact : '/contact',
-    detail: '/detail',
-    favs: '/favs'
+    contact : '/contacto',
+    detail: '/dentista',
+    favs: '/destacados'
 }
