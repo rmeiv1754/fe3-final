@@ -11,23 +11,13 @@ import { useEffect, useState } from "react";
 
 
 function App() {
-  const [dentistaSel, setDentistaSel] = useState({}); 
-  const [cards, setCards] = useState([{}])
-    const url = 'https://jsonplaceholder.typicode.com/users'
-    useEffect(() => {
-        fetch(url)
-        .then(cards => cards.json())
-        .then(data => setCards(data))
-    }, [])
-    console.log(cards)
-
   return (
       <div className="App">
            <Navbar/>
         <Routes>
-          <Route path={routes.home} element={<Home cards = {cards} dentistaSel={dentistaSel} setDentistaSel={setDentistaSel}/>}/>
+          <Route path={routes.home} element={<Home/>}/>
           <Route path={routes.contact} element={<Contact/>}/>
-          <Route path="/dentista/:id" element={<Detail cards = {cards} dentistaSel={dentistaSel} setDentistaSel={setDentistaSel}/>}/>
+          <Route path="/dentista/:id" element={<Detail/>}/>
           <Route path={routes.favs} element={<Favs/>}/>
         </Routes>
           <Footer/>
