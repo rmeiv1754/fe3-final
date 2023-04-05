@@ -21,8 +21,8 @@ const Card = () => {
             <Link key={card.id} to={"/dentista/" + card.id}>
               <h3>{card.name}</h3>
             </Link>
+            <h3>{card.username}</h3>
             <Link to="/destacados">
-            <h4>{card.username}</h4>
             <button onClick={() => addFav(card)} className="favButton">
               ⭐
             </button>
