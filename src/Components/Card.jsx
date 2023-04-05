@@ -9,7 +9,6 @@ const Card = () => {
       alert("Este dentista ya está en tus favoritos");
     } else {
       favDispatch({ type: "ADD_FAV", payload: card });
-      alert("Dentista agregado a tus favoritos");
     }
   };
 
@@ -22,10 +21,12 @@ const Card = () => {
             <Link key={card.id} to={"/dentista/" + card.id}>
               <h3>{card.name}</h3>
             </Link>
+            <Link to="/destacados">
             <h4>{card.username}</h4>
             <button onClick={() => addFav(card)} className="favButton">
               ⭐
             </button>
+            </Link>
           </div>
         </div>
       ))}
