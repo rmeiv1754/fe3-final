@@ -1,18 +1,12 @@
+import Card from "../Components/Card";
 
-import Card from '../Components/Card';
-import { useGlobalStates } from '../Context/Context';
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 const Home = () => {
-
-  const {themeState} = useGlobalStates()
-
   return (
-    <main className={themeState.theme ? "dark" : "light"}>
+    <main>
       <h1>Home</h1>
-      <Card/>
+      <Card />
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

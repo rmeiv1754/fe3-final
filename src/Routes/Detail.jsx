@@ -1,41 +1,51 @@
-
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Detail = () => {
-  const [dentista, setDentista] = useState({})
+  const [dentista, setDentista] = useState({});
 
-  const params = useParams()
-  console.log(useParams())
- 
-  const url = `https://jsonplaceholder.typicode.com/users/${params.id}`
+  const params = useParams();
+  console.log(useParams());
 
+  const url = `https://jsonplaceholder.typicode.com/users/${params.id}`;
 
-  useEffect(() =>{
+  useEffect(() => {
     fetch(url)
-    .then(res => res.json())
-    .then(data => setDentista(data))
+      .then((res) => res.json())
+      .then((data) => setDentista(data));
+  }, [params.id]);
 
-  }, [params.id])
-
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   return (
-    <>
-    <h1>Detail Dentist id {dentista.id}</h1>
-    <div>
-        <h3>Nombre: {dentista.name}</h3>
-        <h3>Email: {dentista.email}</h3>
-        <h3>Teléfono: {dentista.phone}</h3>
-        <h3>Website: {dentista.website}</h3>
-      </div>
-    {/* aqui deberan renderizar la informacion en detalle de un user en especifico /}
-    {/ Deberan mostrar el name - email - phone - website por cada user en especifico */}
-  </>
-  )
-}
+    <div className="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th className="table-title" colspan="2">
+            Detalles dentista {dentista.id}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Nombre:</th>
+          <td>{dentista.name}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{dentista.email}</td>
+        </tr>
+        <tr>
+          <th>Teléfono:</th>
+          <td>{dentista.phone}</td>
+        </tr>
+        <tr>
+          <th>Website:</th>
+          <td>{dentista.website}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  );
+};
 
-export default Detail
+export default Detail;

@@ -1,32 +1,28 @@
 import React from "react";
 import { useGlobalStates } from "../Context/Context";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import { Link } from "react-router-dom";
 
 const Favs = () => {
-  const {favState} = useGlobalStates()
+  const { favState } = useGlobalStates();
 
   return (
-    <>
+    <div>
       <h1>Dentists Favs</h1>
       <div className="card-grid">
-      <button>
-            {favState.map((card) => (
-              <div key={card.id}>
-                <img
-              src="./images/doctor.jpg"
-              alt=""
-              style={{ width: 500, height: 250, objectFit: "cover" }}
-            />
-            <h3>{card.name}</h3>
-            <h4>{card.username}</h4>
-              </div>
-            ))}
-            </button>
+        {favState.map((card) => (
+          <div key={card.id}>
+            <div className="card">
+              <img className="card-img" src="./images/doctor.jpg" alt="" />
+              <Link key={card.id} to={"/dentista/" + card.id}>
+                <h3>{card.name}</h3>
+              </Link>
+              <h4>{card.username}</h4>
+              <button className="favButton-fav">⭐</button>
+            </div>
           </div>
-        {/* este componente debe consumir los destacados del localStorage */}
-        {/* Deberan renderizar una Card por cada uno de ellos */}
-    </>
+        ))}
+      </div>
+    </div>
   );
 };
 
